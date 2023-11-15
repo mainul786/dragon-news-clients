@@ -7,14 +7,21 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaCircleUser } from 'react-icons/fa6';
+import Button from 'react-bootstrap/Button';
 
 
 
 const Header = () => {
-  const {user} = useContext(AuthContext);
-    return (
-       
-         <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => { })
+      .catch(error => console.error(error))
+  }
+  return (
+
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand ><Link to='/'>Dragon News</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,27 +31,42 @@ const Header = () => {
             <Nav.Link href="#pricing">News</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+            <Nav.Link href="#deets">
+              {
+                user?.uid ?
+                  <>
+                    <span>{user?.displayName}</span>
+                    <Button onClick={handleLogOut} variant="outline-info">Log Out</Button>
+                  </>
+                  :
+                  <>
+                    <Link to='/login'>Login</Link>
+                    <Link to='/register'>Register</Link>
+                  </>
+              }
+            </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-             { user ? 
-              <Image src={user.photoURL} style={{height:'60px'}} roundedCircle></Image>
+              {user?.photoURL ?
+                <Image src={user?.photoURL}
+                  style={{ height: '30px' }}
+                  rounded>
+                </Image>
+                :
 
-              :
-              
-              <FaCircleUser />
-              
+                <FaCircleUser />
+
               }
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
-    <div className="d-lg-none">
+      <div className="d-lg-none">
         <LeftSideNav></LeftSideNav>
-    </div>
+      </div>
     </Navbar>
 
-       
-    );
+
+  );
 };
 
 export default Header;
