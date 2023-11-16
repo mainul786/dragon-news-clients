@@ -31,7 +31,7 @@ const Header = () => {
             <Nav.Link href="#pricing">News</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">
+            <Nav.Link>
               {
                 user?.uid ?
                   <>
