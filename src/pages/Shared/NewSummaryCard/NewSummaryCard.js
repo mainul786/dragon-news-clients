@@ -6,7 +6,6 @@ import Image from 'react-bootstrap/Image';
 import { FaEye, FaRegBookmark, FaShare, FaStar } from "react-icons/fa6";
 
 const NewSummaryCard = ({ news }) => {
-  console.log(news);
   const { author, title, details, total_view, _id, image_url, rating } = news;
   return (
     <Card className="mb-4">
