@@ -31,7 +31,7 @@ const Header = () => {
             <Nav.Link href="#pricing">News</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link>
+            <>
               {
                 user?.uid ?
                   <>
@@ -44,8 +44,8 @@ const Header = () => {
                     <Link to='/register'>Register</Link>
                   </>
               }
-            </Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            </>
+            <Link to="/profile">
               {user?.photoURL ?
                 <Image src={user?.photoURL}
                   style={{ height: '30px' }}
@@ -56,7 +56,7 @@ const Header = () => {
                 <FaCircleUser />
 
               }
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
