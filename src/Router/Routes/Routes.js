@@ -44,10 +44,6 @@ export const router = createBrowserRouter([
             {
                 path:'profile',
                 element:<PrivateRoutes><Profile></Profile></PrivateRoutes>
-            },
-            {
-                path:'*',
-                element:<h1>Page Not Found.........</h1>
             }
         ]
     }
