@@ -11,41 +11,41 @@ import Profile from "../../pages/Others/Profile";
 
 export const router = createBrowserRouter([
     {
-        path:'/',
-        element:<Main></Main>,
-        children:[
+        path: '/',
+        element: <Main></Main>,
+        children: [
             {
-                path:'/',
-                element:<Home></Home>,
-                loader: ()=>fetch(`http://localhost:5000/news`)
+                path: '/',
+                element: <Home></Home>,
+                loader: () => fetch(`https://dragon-news-server-g7ghdkt5k-mainul-islams-projects-5918684d.vercel.app/news`)
             },
             {
-                path:'/category/:id',
-                element:<Category></Category>,
-                loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)
+                path: '/category/:id',
+                element: <Category></Category>,
+                loader: ({ params }) => fetch(`https://dragon-news-server-g7ghdkt5k-mainul-islams-projects-5918684d.vercel.app/category/${params.id}`)
             },
             {
-                path:'/news/:id',
-                element:<PrivateRoutes><News></News></PrivateRoutes>,
-                loader:({params})=>fetch(`http://localhost:5000/news/${params.id}`)
+                path: '/news/:id',
+                element: <PrivateRoutes><News></News></PrivateRoutes>,
+                loader: ({ params }) => fetch(`https://dragon-news-server-g7ghdkt5k-mainul-islams-projects-5918684d.vercel.app/news/${params.id}`)
             },
             {
-                path:'login',
-                element:<Login></Login>
+                path: 'login',
+                element: <Login></Login>
             },
             {
-                path:'register',
-                element:<Register></Register>
+                path: 'register',
+                element: <Register></Register>
             },
             {
-                path:'terms',
-                element:<TermAndCondition></TermAndCondition>
+                path: 'terms',
+                element: <TermAndCondition></TermAndCondition>
             },
             {
-                path:'profile',
-                element:<PrivateRoutes><Profile></Profile></PrivateRoutes>
+                path: 'profile',
+                element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
             }
         ]
     }
 
-])
+]);
