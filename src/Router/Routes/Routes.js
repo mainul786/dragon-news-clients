@@ -17,17 +17,17 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch(`https://dragon-news-server-g7ghdkt5k-mainul-islams-projects-5918684d.vercel.app/news`)
+                loader: () => fetch(`https://dragon-news-server-six-gamma.vercel.app/news`)
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`https://dragon-news-server-g7ghdkt5k-mainul-islams-projects-5918684d.vercel.app/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://dragon-news-server-six-gamma.vercel.app/category/${params.id}`)
             },
             {
                 path: '/news/:id',
                 element: <PrivateRoutes><News></News></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://dragon-news-server-g7ghdkt5k-mainul-islams-projects-5918684d.vercel.app/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://dragon-news-server-six-gamma.vercel.app/news/${params.id}`)
             },
             {
                 path: 'login',
